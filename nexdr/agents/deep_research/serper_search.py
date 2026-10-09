@@ -104,7 +104,7 @@ class SerperSearch:
         self.api_key = os.getenv("SERPER_API_KEY")
         if not self.api_key:
             raise ValueError("Serper API key is required")
-        self.base_url = "https://google.serper.dev/"
+        self.base_url = os.getenv("SERPER_BASE_URL", "https://google.serper.dev").rstrip("/") + "/"
         self.timeout = timeout
         self.max_retries = max_retries
         self.result_key_for_type: dict = {
